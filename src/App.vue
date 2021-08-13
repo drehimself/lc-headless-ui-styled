@@ -176,6 +176,114 @@
           </TransitionRoot>
         </div>
       </div>
+      <div class="mt-4">
+        <h2 class="font-bold text-xl pt-2">Radio Group</h2>
+        <RadioGroup v-model="plan" class="max-w-md mt-8">
+          <RadioGroupLabel class="font-bold">Plan</RadioGroupLabel>
+          <div class="space-y-4 mt-4">
+            <RadioGroupOption v-slot="{ checked }" value="startup" class="bg-white rounded-md shadow">
+              <div
+                class="flex items-center justify-between rounded-md px-4 py-4"
+                :class="checked ? 'bg-blue-500 text-white' : ''"
+              >
+                <div>
+                  <div class="font-bold">Startup</div>
+                  <div class="text-sm">12GB/6 CPUs &middot; 160GB SSD disk</div>
+                </div>
+                <div v-show="checked">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </RadioGroupOption>
+
+            <RadioGroupOption v-slot="{ checked }" value="business" class="bg-white rounded-md shadow">
+              <div
+                class="flex items-center justify-between rounded-md px-4 py-4"
+                :class="checked ? 'bg-blue-500 text-white' : ''"
+              >
+                <div>
+                  <div class="font-bold">Business</div>
+                  <div class="text-sm">16GB/8 CPUs &middot; 250GB SSD disk</div>
+                </div>
+                <div v-show="checked">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </RadioGroupOption>
+
+            <RadioGroupOption v-slot="{ checked }" value="enterprise" class="bg-white rounded-md shadow">
+              <div
+                class="flex items-center justify-between rounded-md px-4 py-4"
+                :class="checked ? 'bg-blue-500 text-white' : ''"
+              >
+                <div>
+                  <div class="font-bold">Enterprise</div>
+                  <div class="text-sm">32GB/12 CPUs &middot; 500GB SSD disk</div>
+                </div>
+                <div v-show="checked">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </RadioGroupOption>
+
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div class="mt-4">
+        <h2 class="font-bold text-xl pt-2">Alternate Radio Group</h2>
+        <RadioGroup v-model="gameSelection" class="font-retro max-w-md mt-8">
+          <RadioGroupLabel class="font-bold">Video Game Menu</RadioGroupLabel>
+          <div class="space-y-4 mt-4">
+            <RadioGroupOption v-slot="{ checked }" value="new game" class="text-center focus:outline-none cursor-pointer">
+              <div
+                class="border border-transparent px-4 py-4"
+                :class="checked ? 'border-gray-500' : ''"
+              >
+                <div>
+                  New Game
+                </div>
+
+              </div>
+            </RadioGroupOption>
+
+            <RadioGroupOption v-slot="{ checked }" value="load game" class="text-center focus:outline-none cursor-pointer">
+              <div
+                class="border border-transparent px-4 py-4"
+                :class="checked ? 'border-gray-500' : ''"
+              >
+                <div>
+                  Load Game
+                </div>
+
+              </div>
+            </RadioGroupOption>
+
+            <RadioGroupOption v-slot="{ checked }" value="settings" class="text-center focus:outline-none cursor-pointer">
+              <div
+                class="border border-transparent px-4 py-4"
+                :class="checked ? 'border-gray-500' : ''"
+              >
+                <div>
+                  Settings
+                </div>
+
+              </div>
+            </RadioGroupOption>
+
+
+
+
+
+          </div>
+        </RadioGroup>
+      </div>
     </div>
   </div>
 </template>
@@ -185,7 +293,9 @@
   TransitionChild,
   Dialog,
   DialogOverlay,
-  DialogTitle, } from "@headlessui/vue";
+  DialogTitle, RadioGroup,
+    RadioGroupLabel,
+    RadioGroupOption, } from "@headlessui/vue";
 
   import { ChevronDownIcon } from '@heroicons/vue/solid'
 
@@ -201,11 +311,16 @@
       Dialog,
       DialogOverlay,
       DialogTitle,
+      RadioGroup,
+      RadioGroupLabel,
+      RadioGroupOption,
     },
 
     data() {
       return {
         isOpen: false,
+        plan: 'startup',
+        gameSelection: 'new game',
       }
     },
     methods: {
