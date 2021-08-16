@@ -284,6 +284,80 @@
           </div>
         </RadioGroup>
       </div>
+      <div class="py-8">
+        <h2 class="font-bold text-xl pt-2">Tabs</h2>
+        <TabGroup :defaultIndex="1">
+          <TabList class="bg-blue-500 rounded-md flex justify-between px-2 py-2">
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="rounded-md text-white px-4 py-2"
+                :class="{ 'bg-white text-gray-900' : selected }"
+              >
+                Tab 1
+              </button>
+            </Tab>
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="rounded-md text-white px-4 py-2"
+                :class="{ 'bg-white text-gray-900' : selected }"
+              >
+                Tab 2
+              </button>
+            </Tab>
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="rounded-md text-white px-4 py-2"
+                :class="{ 'bg-white text-gray-900' : selected }"
+              >
+                Tab 3
+              </button>
+            </Tab>
+          </TabList>
+          <TabPanels class="bg-white rounded-md px-4 py-2 my-2">
+            <TabPanel>Content 1. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus autem impedit, hic obcaecati cumque commodi veniam sunt eum molestias, molestiae magni ipsam vel quia, corporis error minima est. Aspernatur assumenda repellat perspiciatis? Impedit omnis, iusto atque incidunt repellat ducimus commodi praesentium architecto, minus quidem cupiditate corporis unde provident consequuntur dolore numquam distinctio temporibus sint necessitatibus aliquam porro mollitia sapiente. Voluptatem blanditiis sit facilis exercitationem nisi natus obcaecati iste inventore laborum saepe dicta veniam similique debitis velit nobis amet delectus alias dolorum consectetur voluptas dolore, quod at assumenda mollitia! Sapiente, vero autem soluta rem eveniet possimus eos earum. Perspiciatis, repellat. Ipsa? </TabPanel>
+            <TabPanel>Content 2</TabPanel>
+            <TabPanel>Content 3</TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </div>
+      <div class="py-8">
+        <h2 class="font-bold text-xl pt-2">Tabs Alternate</h2>
+        <TabGroup :defaultIndex="1">
+          <TabList class="py-2 pr-4">
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="px-4 py-2"
+                :class="{ 'border-b-4 border-blue-500' : selected }"
+              >
+                Tab 1
+              </button>
+            </Tab>
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="px-4 py-2"
+                :class="{ 'border-b-4 border-blue-500' : selected }"
+              >
+                Tab 2
+              </button>
+            </Tab>
+            <Tab v-slot="{ selected }" as="template">
+              <button
+                class="px-4 py-2"
+                :class="{ 'border-b-4 border-blue-500' : selected }"
+              >
+                Tab 3
+              </button>
+            </Tab>
+
+
+          </TabList>
+          <TabPanels class="bg-white rounded-md px-4 py-2 my-2">
+            <TabPanel>Content 1. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus autem impedit, hic obcaecati cumque commodi veniam sunt eum molestias, molestiae magni ipsam vel quia, corporis error minima est. Aspernatur assumenda repellat perspiciatis? Impedit omnis, iusto atque incidunt repellat ducimus commodi praesentium architecto, minus quidem cupiditate corporis unde provident consequuntur dolore numquam distinctio temporibus sint necessitatibus aliquam porro mollitia sapiente. Voluptatem blanditiis sit facilis exercitationem nisi natus obcaecati iste inventore laborum saepe dicta veniam similique debitis velit nobis amet delectus alias dolorum consectetur voluptas dolore, quod at assumenda mollitia! Sapiente, vero autem soluta rem eveniet possimus eos earum. Perspiciatis, repellat. Ipsa? </TabPanel>
+            <TabPanel>Content 2</TabPanel>
+            <TabPanel>Content 3</TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </div>
     </div>
   </div>
 </template>
@@ -295,7 +369,7 @@
   DialogOverlay,
   DialogTitle, RadioGroup,
     RadioGroupLabel,
-    RadioGroupOption, } from "@headlessui/vue";
+    RadioGroupOption, TabGroup, TabList, Tab, TabPanels, TabPanel} from "@headlessui/vue";
 
   import { ChevronDownIcon } from '@heroicons/vue/solid'
 
@@ -314,6 +388,11 @@
       RadioGroup,
       RadioGroupLabel,
       RadioGroupOption,
+      TabGroup,
+      TabList,
+      Tab,
+      TabPanels,
+      TabPanel,
     },
 
     data() {
